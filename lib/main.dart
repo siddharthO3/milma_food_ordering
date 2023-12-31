@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myfirstapp/Item_Widget/items_row.dart';
+import 'Item_Widget/items_row.dart';
 import 'Item_Widget/items.dart';
 
 void main() {
