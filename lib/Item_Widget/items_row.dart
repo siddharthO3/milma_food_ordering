@@ -3,7 +3,7 @@ import 'items.dart';
 
 class ItemsRow extends StatelessWidget {
   final List<Items> itemsList;
-  ItemsRow(this.itemsList);
+  const ItemsRow(this.itemsList);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class ItemsRow extends StatelessWidget {
                 width: 300,
                 //height: 225,
 
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.only(right: 16, top: 12),
                 decoration: BoxDecoration(
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Color.fromARGB(24, 0, 0, 0),
                       spreadRadius: 4,
@@ -38,7 +38,7 @@ class ItemsRow extends StatelessWidget {
                   children: [
                     //Image section----------------------------------------
                     ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(40),
                           topRight: Radius.circular(40)),
                       child: Stack(
@@ -47,7 +47,7 @@ class ItemsRow extends StatelessWidget {
                           Stack(
                             alignment: Alignment.bottomCenter,
                             children: [
-                              Container(
+                              SizedBox(
                                 width: double.infinity,
                                 height: 140,
                                 child: Image.asset(
@@ -59,13 +59,13 @@ class ItemsRow extends StatelessWidget {
                                 width: double.infinity,
                                 height: 40,
                                 alignment: Alignment.bottomLeft,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   gradient: LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
                                       Color.fromARGB(0, 255, 255, 255),
-                                      const Color.fromARGB(255, 255, 255, 255),
+                                      Color.fromARGB(255, 255, 255, 255),
                                     ],
                                   ),
                                 ),
@@ -75,10 +75,11 @@ class ItemsRow extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: CircleAvatar(
-                              backgroundColor: Color.fromARGB(149, 0, 0, 0),
+                              backgroundColor:
+                                  const Color.fromARGB(149, 0, 0, 0),
                               child: IconButton(
                                 onPressed: () {},
-                                icon: Icon(Icons.favorite_border),
+                                icon: const Icon(Icons.favorite_border),
                                 style: IconButton.styleFrom(
                                   foregroundColor: Colors.white,
                                 ),
@@ -91,47 +92,47 @@ class ItemsRow extends StatelessWidget {
 
                     // Info Section----------------------------------------
                     Container(
-                      padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                      padding: const EdgeInsets.only(
+                        left: 20,
+                        right: 20,
+                        bottom: 10,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                item.itemName!,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                'Expected Time: ${item.expectedTime!}',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                            ],
+                          Text(
+                            item.itemName!,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
+                          const SizedBox(height: 5),
+                          Text(
+                            'Expected Time: ${item.expectedTime!}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 'Rs. ${item.price!}/-',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.blue,
                                 ),
                               ),
                               ElevatedButton(
-                                onPressed: () {}, // Function to add to cart
-                                child: Text('Add to Cart'),
+                                onPressed: () {},
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blue,
-                                    foregroundColor: Colors.white),
+                                  backgroundColor: Colors.blue,
+                                  foregroundColor: Colors.white,
+                                ), // Function to add to cart
+                                child: const Text('Add to Cart'),
                               ),
                             ],
                           ),
