@@ -5,7 +5,7 @@ import 'items.dart';
 
 class ItemsRow extends StatelessWidget {
   final List<Items> itemsList;
-  const ItemsRow(this.itemsList);
+  const ItemsRow(this.itemsList, {super.key});
 
   @override
   Widget build(BuildContext context) {

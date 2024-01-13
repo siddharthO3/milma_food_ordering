@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:milma_food_ordering/screens/cart_page.dart';
-import 'package:milma_food_ordering/screens/login/login.dart';
-import 'package:milma_food_ordering/screens/login/sign_up.dart';
-import 'package:milma_food_ordering/screens/login/welcome.dart';
-import 'package:milma_food_ordering/screens/product_page.dart';
+import '../screens/cart_page.dart';
+import '../screens/login/login.dart';
+import '../screens/login/sign_up.dart';
+import '../screens/login/welcome.dart';
+import '../screens/product_page.dart';
 
 import 'screens/home_page.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
