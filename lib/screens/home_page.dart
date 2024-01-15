@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/items.dart';
-import '../models/items_row.dart';
+import '../widgets/items_row.dart';
 
 class HomePage extends StatelessWidget {
   static const routeName = '/';
