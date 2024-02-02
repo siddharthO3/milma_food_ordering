@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "750057507041",
+    "project_id": "login-signup-004",
+    "storage_bucket": "login-signup-004.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750057507041:android:de2eb1a3efbff72724cfa0",
+        "android_client_info": {
+          "package_name": "com.example.milma_food_ordering"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750057507041-brab2b7c48lvg1de7ba33m0iuesk34cm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.milma_food_ordering",
+            "certificate_hash": "1e8b93fb425407d20a330c086567fd7dbbac598c"
+          }
+        },
+        {
+          "client_id": "750057507041-j2l7uhb75o8upit38nejaqlgfsg7rebs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTNEbelS6Ffut7g0zF8KyMD6zmodkY3uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750057507041-j2l7uhb75o8upit38nejaqlgfsg7rebs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

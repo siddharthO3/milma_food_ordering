@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../models/items.dart';
 import '../widgets/items_row.dart';
 
 class HomePage extends StatelessWidget {
+  final user = FirebaseAuth.instance.currentUser!;
   static const routeName = '/';
   // Placeholder Text for the item widgets
   static const String imageURI = "assets/image/food.jpg";
@@ -64,6 +67,24 @@ class HomePage extends StatelessWidget {
 
               // Item Widget
               ItemsRow(_itemsList),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Welcome '),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(user.email!),
+                ],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              ElevatedButton.icon(
+                  onPressed: () => FirebaseAuth.instance.signOut(),
+                  icon: Icon(Icons.logout_outlined),
+                  label: const Text('Sign Out')),
             ],
           ),
         ));
