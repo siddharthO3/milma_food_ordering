@@ -2,8 +2,20 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:milma_food_ordering/global.dart';
 import 'package:milma_food_ordering/screens/home_page.dart';
 import 'package:milma_food_ordering/models/SBar.dart';
+
+class EmailVer {
+
+   navigateToCorrectPage(BuildContext context) {
+    if (isEmailVerified) {
+      Navigator.pushNamed(context, 'homepage');
+    } else {
+      Navigator.pushNamed(context, 'verifyEmailP');
+    }
+  }
+}
 
 class verifyEmailP extends StatefulWidget {
   const verifyEmailP({super.key});
@@ -13,7 +25,6 @@ class verifyEmailP extends StatefulWidget {
 }
 
 class _verifyEmailPState extends State<verifyEmailP> {
-  bool isEmailVerified = false;
   Timer? timer;
 
   Future sendVerificationMail() async {
@@ -33,7 +44,6 @@ class _verifyEmailPState extends State<verifyEmailP> {
 
     if (!isEmailVerified) {
       sendVerificationMail();
-
       timer = Timer.periodic(Duration(seconds: 3), (_) => checkEmailVerified());
     }
   }
@@ -56,48 +66,55 @@ class _verifyEmailPState extends State<verifyEmailP> {
   }
 
   @override
-  Widget build(BuildContext context) => isEmailVerified
-      ? HomePage()
-      : Container(
-        child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text('Resend verification mail',style: GoogleFonts.lato(
-                      color: const Color.fromARGB(255, 21, 39, 77),
-                      fontWeight: FontWeight.bold,),),
-                      SizedBox(height: 7,),
-                  ElevatedButton.icon(
-                      onPressed: () {
-                        sendVerificationMail();
-                      },
-                      icon: Icon(Icons.mail_outline),
-                      label: Text(
-                        'Re-Send link',
-                        style: GoogleFonts.lato(
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 21, 39, 77),
-                          fontSize: 15,
-                        ),
-                      )),
-                      SizedBox(height: 7,),
-                      ElevatedButton.icon(
-                      onPressed: () {
-                        FirebaseAuth.instance.signOut();
-                      },
-                      icon: Icon(Icons.cancel_outlined),
-                      label: Text(
-                        'Cancel',
-                        style: GoogleFonts.lato(
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 21, 39, 77),
-                          fontSize: 15,
-                        ),
-                      ))
-                ],
-              ),
+  Widget build(BuildContext context) => Center(
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Resend verification mail',
+                  style: GoogleFonts.lato(
+                    color: const Color.fromARGB(255, 21, 39, 77),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 17,
+                ),
+                ElevatedButton.icon(
+                    onPressed: () {
+                      sendVerificationMail();
+                    },
+                    icon: Icon(Icons.mail_outline),
+                    label: Text(
+                      'Re-Send link',
+                      style: GoogleFonts.lato(
+                        fontWeight: FontWeight.bold,
+                        color: const Color.fromARGB(255, 21, 39, 77),
+                        fontSize: 15,
+                      ),
+                    )),
+                SizedBox(
+                  height: 17,
+                ),
+                ElevatedButton.icon(
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                    },
+                    icon: Icon(Icons.cancel_outlined),
+                    label: Text(
+                      'Cancel',
+                      style: GoogleFonts.lato(
+                        fontWeight: FontWeight.bold,
+                        color: const Color.fromARGB(255, 21, 39, 77),
+                        fontSize: 15,
+                      ),
+                    ))
+              ],
+            ),
           ),
+        ),
       );
 }
