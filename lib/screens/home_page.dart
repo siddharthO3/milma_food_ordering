@@ -4,8 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/items.dart';
 import '../widgets/items_row.dart';
 
+class NavigateHome {
+  homescreen(BuildContext context) {
+    Navigator.pushNamed(context, 'homepage');
+  }
+}
+
 class HomePage extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
+
   static const routeName = '/';
   // Placeholder Text for the item widgets
   static const String imageURI = "assets/image/food.jpg";
@@ -82,7 +89,10 @@ class HomePage extends StatelessWidget {
                 height: 5,
               ),
               ElevatedButton.icon(
-                  onPressed: () => FirebaseAuth.instance.signOut(),
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+              // Navigator.pushReplacementNamed(context, 'authP');
+                  },
                   icon: Icon(Icons.logout_outlined),
                   label: const Text('Sign Out')),
             ],

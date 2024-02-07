@@ -6,16 +6,11 @@ import 'package:milma_food_ordering/models/Dashline.dart';
 import 'package:milma_food_ordering/models/SBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:milma_food_ordering/screens/login/forgotPasswordP.dart';
 
 class signIn extends StatefulWidget {
-  const signIn(this.onSUClick, {super.key});
-  final VoidCallback onSUClick;
+  const signIn({super.key});
 
-  // Static method for creating instances of the signIn widget
-  static signInWithCallback(VoidCallback onSUClick) {
-    return signIn(onSUClick);
-  }
+
 
   @override
   State<signIn> createState() => _signInState();
@@ -89,7 +84,7 @@ class _signInState extends State<signIn> {
     return Form(
       key: signInFormKey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const SizedBox(
             height: 20,
@@ -107,168 +102,38 @@ class _signInState extends State<signIn> {
             children: [
               // Google Sign In icon
               Container(
-                height: 85,
-                width: 85,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: IconButton(
-                    iconSize: 30, // Decrease the icon size
-                    icon: Image.asset('assets/image/google_icon.png'),
-                    onPressed: () async {
-                      userCredential.value = await signInWithGoogle();
-                      if (userCredential.value != null) {
-                        print(userCredential.value.user!.email);
-                      }
-                    },
-                  ),
-                ),
+                width: MediaQuery.of(context).size.width*0.8,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.all(Radius.circular(35)),
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DashedLine(),
-              Container(
-                margin: EdgeInsets.all(4),
-                child: Text(
-                  'or',
-                  style: GoogleFonts.lato(
-                    color: const Color.fromARGB(255, 21, 39, 77),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              DashedLine(),
-            ],
-          ),
-          Column(
-            children: [
-              TextFormField(
-                controller: _emailController,
-                textInputAction: TextInputAction.next,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (email) =>
-                    email != null && !EmailValidator.validate(email)
-                        ? 'Enter a valid email'
-                        : null,
-                decoration: InputDecoration(
-                  iconColor: Color.fromARGB(90, 21, 39, 77),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  hoverColor: Color.fromARGB(90, 21, 39, 77),
-                  label: Text(
-                    'Enter Your Mail Id',
-                    style: GoogleFonts.lato(
-                      color: Color.fromARGB(90, 21, 39, 77),
-                      fontWeight: FontWeight.bold,
+                child: Center(
+                  child:  TextButton( 
+                     style: ButtonStyle(
+    backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
+  ),   
+                  onPressed: () async {
+                                userCredential.value = await signInWithGoogle();
+                                if (userCredential.value != null) {
+                                  print(userCredential.value.user!.email);
+                                }
+                              },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                       Image.asset('assets/image/google_icon.png',width: 80,height: 70,),
+                       
+                        Text('Continue with Google',style: GoogleFonts.lato(
+                          color: const Color.fromARGB(255, 21, 39, 77),
+                          fontWeight: FontWeight.w500,
+                        ),)
+                      ],
                     ),
                   ),
-                  prefixIcon: Icon(
-                    Icons.person_outline_outlined,
-                    color: Color.fromARGB(90, 21, 39, 77),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                controller: _passwordController,
-                textInputAction: TextInputAction.next,
-                obscureText: true,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => value != null && value.length < 6
-                    ? 'Enter atleast 6 charecters'
-                    : null,
-                decoration: InputDecoration(
-                  iconColor: Color.fromARGB(90, 21, 39, 77),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  hoverColor: Color.fromARGB(90, 21, 39, 77),
-                  label: Text(
-                    'Enter Password',
-                    style: GoogleFonts.lato(
-                      color: Color.fromARGB(90, 21, 39, 77),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  prefixIcon: const Icon(
-                    Icons.lock_outline_rounded,
-                    color: Color.fromARGB(90, 21, 39, 77),
-                  ),
                 ),
               ),
             ],
-          ),
-          const SizedBox(
-            height: 2,
-          ),
-          Center(
-            child: GestureDetector(
-              onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const forgotPasswordP(),
-                ),
-              ),
-              child: const Text('Forgot Password',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline,
-                      color: Color.fromARGB(255, 21, 39, 77))),
-            ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Dont have an account ? ,  ',
-                style: GoogleFonts.lato(),
-              ),
-              GestureDetector(
-                onTap: () {
-                  widget.onSUClick();
-                },
-                child: const Text('Sign-Up',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
-                        color: Color.fromARGB(255, 21, 39, 77))),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              OutlinedButton(
-                onPressed: () {
-                  _emailController.clear();
-                  _passwordController.clear();
-                },
-                child: Text('clear'),
-              ),
-              OutlinedButton(
-                onPressed: () {
-                  _signIn();
-                },
-                child: Text(
-                  'Next',
-                  style: GoogleFonts.lato(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 21, 39, 77),
-                ),
-              )
-            ],
-          )
+          ),        
         ],
       ),
     );
