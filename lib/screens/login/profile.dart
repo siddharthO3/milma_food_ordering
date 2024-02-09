@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 60),
+                const SizedBox(height: 90),
                 Center(
                   child: Text(
                     'Give a quick Intro...!',
@@ -54,12 +54,6 @@ class ProfileScreen extends StatelessWidget {
                   hintText: 'Roll number',
                   textInputAction: TextInputAction.next,
                   validator: validateRollNumber,
-                ),
-                const SizedBox(height: 14),
-                const RoundTextField(
-                  hintText: 'Hostel Name',
-                  textInputAction: TextInputAction.next,
-                  validator: validateHostelName,
                 ),
                 const SizedBox(height: 14),
                 const RoundTextField(

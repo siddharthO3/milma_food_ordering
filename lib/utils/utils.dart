@@ -11,17 +11,17 @@ String? validateName(String? name) {
   }
 }
 
-String? validateHostelName(String? name) {
-  if (name == null) {
-    return 'Name cannot be null';
-  } else if (name.isEmpty) {
-    return 'Name should be at least 3 characters';
-  } else if ((name!= 'meenachill' || (name!= 'Meenachill' ) || (name!= 'Manimala') || (name!= 'manimala') || (name!= 'Sahyadri')) || (name!= 'sahyadri') || (name!= 'Anamudi') || (name!= 'anamudi')) {
-    return 'Please enter a valid name';
-  } else {
-    return null;
-  }
-}
+// String? validateHostelName(String? name) {
+//   if (name == null) {
+//     return 'Name cannot be null';
+//   } else if (name.isEmpty) {
+//     return 'Name should be at least 3 characters';
+//   } else if ((name!= 'meenachill' || (name!= 'Meenachill' ) || (name!= 'Manimala') || (name!= 'manimala') || (name!= 'Sahyadri')) || (name!= 'sahyadri') || (name!= 'Anamudi') || (name!= 'anamudi')) {
+//     return 'Please enter a valid name';
+//   } else {
+//     return null;
+//   }
+// }
 
 String? validateNumber(String? number) {
   if (number == null) {
