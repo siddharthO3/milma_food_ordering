@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:milma_food_ordering/screens/login/profile.dart';
 import '../screens/cart_page.dart';
 import '../screens/login/login.dart';
 import '../screens/login/sign_up.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Milma Food Ordering App',
       theme: ThemeData(
         // primarySwatch: Colors.blue,
@@ -27,11 +29,12 @@ class MyApp extends StatelessWidget {
         // scaffoldBackgroundColor: const Color.fromARGB(255, 255, 248, 221),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: HomePage.routeName,
+      initialRoute: ProfileScreen.routeName,
       routes: {
         WelcomeScreen.routeName:(context) => const WelcomeScreen(),
         LoginScreen.routeName:(context) => const LoginScreen(),
         SignUpScreen.routeName:(context) => const SignUpScreen(),
+        ProfileScreen.routeName:(context)=> const ProfileScreen(),
 
         HomePage.routeName:(context) => HomePage(),
         ProductPage.routeName:(context) => const ProductPage(),
