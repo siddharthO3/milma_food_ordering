@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
                 });
                 return Container();
               } else {
-                return signIn();
+                return signInStless();
               }
             },
           ),
