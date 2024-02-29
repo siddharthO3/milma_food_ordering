@@ -24,7 +24,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser!;
+  final user = FirebaseAuth.instance.currentUser;
   //Sample list for item widget
   final List<Items> _itemsList = BackendManager().TEST_ITEMS;
   final List<Items> favorites = [];
@@ -122,27 +122,6 @@ class _HomePageState extends State<HomePage> {
                   leftText: "Snacks",
                   itemsList: _itemsList,
                 ),
-
-                Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Welcome '),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text(user.email!),
-                ],
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              ElevatedButton.icon(
-                  onPressed: () {
-                    FirebaseAuth.instance.signOut();
-              // Navigator.pushReplacementNamed(context, 'authP');
-                  },
-                  icon: Icon(Icons.logout_outlined),
-                  label: const Text('Sign Out')),
               ],
             ),
           ),
@@ -163,23 +142,52 @@ class _HomePageState extends State<HomePage> {
         ),
 
         /// Profile page
-        Card(
-          shadowColor: Colors.transparent,
-          margin: const EdgeInsets.all(8.0),
-          child: SizedBox.expand(
-            child: Center(
-              child: Text(
-                'Profile page',
-                style: Theme.of(context).textTheme.titleLarge,
+        Center(
+          child: Card(
+            shadowColor: Colors.transparent,
+            margin: const EdgeInsets.all(8.0),
+            child: SizedBox.expand(
+              child: Center(
+                child: Column(
+                  children: [
+                    Text(
+                      'Profile page',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    SizedBox(height: 25,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Welcome '),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(user!.email!),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    ElevatedButton.icon(
+                        onPressed: () {
+                          try {
+                            FirebaseAuth.instance.signOut();
+                            Navigator.pop(context);
+                            Navigator.pushNamed(context, 'SignInPage');
+                          } catch (e) {
+                            print('{$e}Cant sign out');
+                          }
+                          // Navigator.pushReplacementNamed(context, 'authP');
+                        },
+                        icon: Icon(Icons.logout_outlined),
+                        label: const Text('Sign Out')),
+                  ],
+                ),
               ),
             ),
           ),
         ),
-
       ][currentPageIndex],
-
-    
-      
     );
   }
 }

@@ -35,7 +35,8 @@ class MyApp extends StatelessWidget {
       ),
       // initialRoute: signIn.routeName,
       routes: {
-        ProductPage.routeName: (context) => const ProductPage(),
+        'SignInPage': (context) => signInStless(),
+        'productpage': (context) => ProductPage(),
         'homepage': (context) => HomePage(),
         CartPage.routeName: (context) => const CartPage(),
       },
@@ -57,13 +58,17 @@ class MyApp extends StatelessWidget {
                 );
               }
               if (snapshot.hasData) {
-                WidgetsBinding.instance!.addPostFrameCallback((_) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, 'homepage');
                 });
                 return Container();
               } else {
-                return signInStless();
+                 WidgetsBinding.instance.addPostFrameCallback((_) {
+                  Navigator.pop(context);
+                Navigator.pushNamed(context, 'SignInPage');
+                });
+                return Container();
               }
             },
           ),
