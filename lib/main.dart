@@ -33,47 +33,48 @@ class MyApp extends StatelessWidget {
         fontFamily: "OpenSans",
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // initialRoute: signIn.routeName,
+      initialRoute: 'homepage',
       routes: {
         'SignInPage': (context) => signInStless(),
-        'productpage': (context) => ProductPage(),
+        //'productpage': (context) => const ProductPage(),
         'homepage': (context) => HomePage(),
         CartPage.routeName: (context) => const CartPage(),
-      },
-      home: Scaffold(
-        backgroundColor: Colors.blue.shade50,
-        body: Padding(
-          padding: EdgeInsets.all(30),
-          child: StreamBuilder<User?>(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (snapshot.hasError) {
-                return Center(
-                  child: Text('Something went wrong'),
-                );
-              }
-              if (snapshot.hasData) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, 'homepage');
-                });
-                return Container();
-              } else {
-                 WidgetsBinding.instance.addPostFrameCallback((_) {
-                  Navigator.pop(context);
-                Navigator.pushNamed(context, 'SignInPage');
-                });
-                return Container();
-              }
-            },
-          ),
-        ),
-      ),
+        ProductPage.routeName: (context) => const ProductPage(),
+      }
+    //   home: Scaffold(
+    //     backgroundColor: Colors.blue.shade50,
+    //     body: Padding(
+    //       padding: EdgeInsets.all(30),
+    //       child: StreamBuilder<User?>(
+    //         stream: FirebaseAuth.instance.authStateChanges(),
+    //         builder: (context, snapshot) {
+    //           if (snapshot.connectionState == ConnectionState.waiting) {
+    //             return Center(
+    //               child: CircularProgressIndicator(),
+    //             );
+    //           }
+    //           if (snapshot.hasError) {
+    //             return Center(
+    //               child: Text('Something went wrong'),
+    //             );
+    //           }
+    //           if (snapshot.hasData) {
+    //             WidgetsBinding.instance.addPostFrameCallback((_) {
+    //               Navigator.pop(context);
+    //               Navigator.pushNamed(context, 'homepage');
+    //             });
+    //             return Container();
+    //           } else {
+    //              WidgetsBinding.instance.addPostFrameCallback((_) {
+    //               Navigator.pop(context);
+    //             Navigator.pushNamed(context, 'SignInPage');
+    //             });
+    //             return Container();
+    //           }
+    //         },
+    //       ),
+    //     ),
+    //   ),
     );
   }
 }

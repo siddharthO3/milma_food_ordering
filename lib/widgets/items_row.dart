@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:milma_food_ordering/screens/product_page.dart';
 
 import '../models/items.dart';
 
@@ -86,114 +87,119 @@ class _ItemsRowState extends State<ItemsRow> {
                     ),
 
                     //Content inside each Item Box
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        //Image section----------------------------------------
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(40),
-                              topRight: Radius.circular(40)),
-                          child: Stack(
-                            alignment: Alignment.topRight,
-                            children: [
-                              Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  SizedBox(
-                                    width: double.infinity,
-                                    height: 140,
-                                    child: Image.asset(
-                                      item.imageURI!,
-                                      fit: BoxFit.fill,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context) ;
+                        Navigator.pushNamed(context, ProductPage.routeName);},
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          //Image section----------------------------------------
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(40),
+                                topRight: Radius.circular(40)),
+                            child: Stack(
+                              alignment: Alignment.topRight,
+                              children: [
+                                Stack(
+                                  alignment: Alignment.bottomCenter,
+                                  children: [
+                                    SizedBox(
+                                      width: double.infinity,
+                                      height: 140,
+                                      child: Image.asset(
+                                        item.imageURI!,
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 40,
-                                    alignment: Alignment.bottomLeft,
-                                    decoration: const BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Color.fromARGB(0, 255, 255, 255),
-                                          Color.fromARGB(255, 255, 255, 255),
-                                        ],
+                                    Container(
+                                      width: double.infinity,
+                                      height: 40,
+                                      alignment: Alignment.bottomLeft,
+                                      decoration: const BoxDecoration(
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Color.fromARGB(0, 255, 255, 255),
+                                            Color.fromARGB(255, 255, 255, 255),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        const Color.fromARGB(149, 0, 0, 0),
+                                    child: IconButton(
+                                      onPressed: () => _handleFavorite(item),
+                                      icon: Icon(isFavoriteIcon),
+                                      style: IconButton.styleFrom(
+                                        foregroundColor: isFavoriteColor,
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: CircleAvatar(
-                                  backgroundColor:
-                                      const Color.fromARGB(149, 0, 0, 0),
-                                  child: IconButton(
-                                    onPressed: () => _handleFavorite(item),
-                                    icon: Icon(isFavoriteIcon),
-                                    style: IconButton.styleFrom(
-                                      foregroundColor: isFavoriteColor,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
 
-                        // Info Section----------------------------------------
-                        Container(
-                          padding: const EdgeInsets.only(
-                            left: 20,
-                            right: 20,
-                            bottom: 10,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                item.itemName!,
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                          // Info Section----------------------------------------
+                          Container(
+                            padding: const EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                              bottom: 10,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  item.itemName!,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                'Expected Time: ${item.expectedTime!}',
-                                style: const TextStyle(
-                                  fontSize: 16,
+                                const SizedBox(height: 5),
+                                Text(
+                                  'Expected Time: ${item.expectedTime!}',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 10),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Rs. ${item.price!}/-',
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue,
+                                const SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Rs. ${item.price!}/-',
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blue,
+                                      ),
                                     ),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.blue,
-                                      foregroundColor: Colors.white,
-                                    ), // Function to add to cart
-                                    child: const Text('Add to Cart'),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue,
+                                        foregroundColor: Colors.white,
+                                      ), // Function to add to cart
+                                      child: const Text('Add to Cart'),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 }).toList(),

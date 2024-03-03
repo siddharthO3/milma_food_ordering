@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           width: 5,
                         ),
-                        Text(user!.email!),
+                        // Text(user!.email!),
                       ],
                     ),
                     SizedBox(
