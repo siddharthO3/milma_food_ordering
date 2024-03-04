@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:milma_food_ordering/global.dart';
 import 'package:milma_food_ordering/models/SBar.dart';
-import 'package:milma_food_ordering/screens/cart_page.dart';
+import 'package:milma_food_ordering/screens/cart.dart';
 import 'package:milma_food_ordering/screens/home_page.dart';
 import 'package:milma_food_ordering/screens/login/signinP.dart';
 import 'package:milma_food_ordering/screens/product_page.dart';
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         'SignInPage': (context) => signInStless(),
         //'productpage': (context) => const ProductPage(),
         'homepage': (context) => HomePage(),
-        CartPage.routeName: (context) => const CartPage(),
+        CartPage.routeName: (context) =>  CartPage(),
         ProductPage.routeName: (context) => const ProductPage(),
       }
     //   home: Scaffold(

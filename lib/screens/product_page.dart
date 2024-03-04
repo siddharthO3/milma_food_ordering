@@ -13,6 +13,8 @@ class _ProductPageState extends State<ProductPage> {
   Color color1 = Colors.white;
   Color color2 = Colors.white;
   var amt = "0" ;
+  bool amt_bool_s = false;
+  bool amt_bool_f = false;
 
   @override
   Widget build(BuildContext context) {
@@ -104,9 +106,17 @@ class _ProductPageState extends State<ProductPage> {
                       color2: Colors.white,
                       onPressed: () {
                         setState(() {
+                          amt_bool_s = !amt_bool_s;
+                          amt_bool_f = false;
                           color2 = Colors.white;
                           color1 = color1 == Colors.white ? Colors.deepPurpleAccent : Colors.white;
-                          amt = "60" ;
+                          if(amt_bool_s ){
+                            amt = "60" ;
+                          }
+                          else{
+                            amt = "0";
+                          }
+
                         });
                       },
                     ),
@@ -120,9 +130,16 @@ class _ProductPageState extends State<ProductPage> {
                       color2: Colors.white,
                       onPressed: () {
                         setState(() {
+                          amt_bool_f = !amt_bool_f;
+                          amt_bool_s = false;
                           color1 = Colors.white;
                           color2 = color2 == Colors.white ? Colors.deepPurpleAccent : Colors.white;
-                          amt = "100" ;
+                          if(amt_bool_f){
+                            amt = "100" ;
+                          }
+                          else{
+                            amt = "0";
+                          }
                         });
                       },
                     ),
