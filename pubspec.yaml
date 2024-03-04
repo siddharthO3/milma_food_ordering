@@ -101,7 +101,7 @@ flutter:
           weight: 700
     - family: Cookie
       fonts:
-        - asset: assets/fontFamily/Cookie-Regular.ttf
+        - asset: assets/fonts/Cookie-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
