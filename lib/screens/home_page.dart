@@ -4,6 +4,7 @@ import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:milma_food_ordering/screens/cart.dart';
 import '../models/items.dart';
 import '../widgets/items_row.dart';
 import '../core/backend_manager.dart';
@@ -62,67 +63,74 @@ class _HomePageState extends State<HomePage> {
         SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize
-                  .min, // This ensures the Column doesn't expand beyond its children.
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /// Search bar
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Colors.blue,
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(100),
+            child: SafeArea(
+              child: Column(
+                mainAxisSize: MainAxisSize
+                    .min, // This ensures the Column doesn't expand beyond its children.
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// Search bar
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Colors.blue,
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              contentPadding: EdgeInsets.symmetric(vertical: 0.0),
+                              hintText: "Search for food",
+                              prefixIcon: Icon(Icons.search),
                             ),
-                            contentPadding: EdgeInsets.symmetric(vertical: 0.0),
-                            hintText: "Search for food",
-                            prefixIcon: Icon(Icons.search),
                           ),
                         ),
-                      ),
-                      SizedBox(width: 10),
-
-                      //cart icon
-                      Icon(
-                        Icons.shopping_cart,
-                        size: 30,
-                      ),
-                    ],
+                        SizedBox(width: 10),
+              
+                        //cart icon
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push( MaterialPageRoute(builder: (context) => CartPage()));
+                          },
+                          child: Icon(
+                            Icons.shopping_cart,
+                            size: 30,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-
-                /// Item Widget
-                ItemsRow(
-                  leftText: "Favorites",
-                  itemsList: _itemsList,
-                ),
-                ItemsRow(
-                  leftText: "Combos",
-                  itemsList: _itemsList,
-                ),
-                ItemsRow(
-                  leftText: "Meals",
-                  itemsList: _itemsList,
-                ),
-                ItemsRow(
-                  leftText: "Beverages",
-                  itemsList: _itemsList,
-                ),
-                ItemsRow(
-                  leftText: "Snacks",
-                  itemsList: _itemsList,
-                ),
-              ],
+              
+                  /// Item Widget
+                  ItemsRow(
+                    leftText: "Favorites",
+                    itemsList: _itemsList,
+                  ),
+                  ItemsRow(
+                    leftText: "Combos",
+                    itemsList: _itemsList,
+                  ),
+                  ItemsRow(
+                    leftText: "Meals",
+                    itemsList: _itemsList,
+                  ),
+                  ItemsRow(
+                    leftText: "Beverages",
+                    itemsList: _itemsList,
+                  ),
+                  ItemsRow(
+                    leftText: "Snacks",
+                    itemsList: _itemsList,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
