@@ -22,7 +22,7 @@ class _CartPageState extends State<CartPage> {
     'Item 10'
   ];
 
-  List<int> quantities = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  List<int> quantities = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
   List<double> prices = [100, 50, 120, 80, 45, 35, 60, 70, 110, 35];
 
@@ -169,6 +169,14 @@ class _CartPageState extends State<CartPage> {
                                                     padding: EdgeInsets.zero,
                                                     onPressed: () {
                                                       decrementQty(index);
+
+                                                      if(quantities[index] == 0){
+                                                        setState(() {
+                                                          quantities.removeAt(index);
+                                                          productName.removeAt(index);
+                                                          prices.removeAt(index);
+                                                        });
+                                                      }
                                                     },
                                                     icon: const Icon(
                                                         Icons.remove),
