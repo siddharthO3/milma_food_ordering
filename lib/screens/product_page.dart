@@ -12,7 +12,7 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   Color color1 = Colors.white;
   Color color2 = Colors.white;
-  var amt = "0" ;
+  var amt = "0";
   bool amt_bool_s = false;
   bool amt_bool_f = false;
 
@@ -76,7 +76,7 @@ class _ProductPageState extends State<ProductPage> {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.access_time,
+                      Icons.access_alarm,
                       size: 18.0,
                     ),
                     Text(
@@ -98,7 +98,9 @@ class _ProductPageState extends State<ProductPage> {
                 padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                 child: Row(
                   children: [
-                    SizedBox(width: 15,),
+                    SizedBox(
+                      width: 15,
+                    ),
                     TwoTextButton(
                       text1: 'Half',
                       text2: '₹60',
@@ -109,14 +111,14 @@ class _ProductPageState extends State<ProductPage> {
                           amt_bool_s = !amt_bool_s;
                           amt_bool_f = false;
                           color2 = Colors.white;
-                          color1 = color1 == Colors.white ? Colors.deepPurpleAccent : Colors.white;
-                          if(amt_bool_s ){
-                            amt = "60" ;
-                          }
-                          else{
+                          color1 = color1 == Colors.white
+                              ? Colors.deepPurpleAccent
+                              : Colors.white;
+                          if (amt_bool_s) {
+                            amt = "60";
+                          } else {
                             amt = "0";
                           }
-
                         });
                       },
                     ),
@@ -133,11 +135,12 @@ class _ProductPageState extends State<ProductPage> {
                           amt_bool_f = !amt_bool_f;
                           amt_bool_s = false;
                           color1 = Colors.white;
-                          color2 = color2 == Colors.white ? Colors.deepPurpleAccent : Colors.white;
-                          if(amt_bool_f){
-                            amt = "100" ;
-                          }
-                          else{
+                          color2 = color2 == Colors.white
+                              ? Colors.deepPurpleAccent
+                              : Colors.white;
+                          if (amt_bool_f) {
+                            amt = "100";
+                          } else {
                             amt = "0";
                           }
                         });
@@ -156,7 +159,7 @@ class _ProductPageState extends State<ProductPage> {
                     Container(
                       margin: EdgeInsets.all(8.0),
                       child: Text(
-                        'Amount : $amt' ,
+                        'Amount : $amt',
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
@@ -213,11 +216,12 @@ Widget TwoTextButton({
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                  color: color1,
+                color: color1,
                 border: Border(
-                  bottom: BorderSide(color: Colors.black), // Border for the bottom side
-                ),),
-
+                  bottom: BorderSide(
+                      color: Colors.black), // Border for the bottom side
+                ),
+              ),
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
