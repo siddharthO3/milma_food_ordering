@@ -89,7 +89,6 @@ class _ItemsRowState extends State<ItemsRow> {
                     //Content inside each Item Box
                     child: InkWell(
                       onTap: () {
-                        Navigator.pop(context) ;
                         Navigator.pushNamed(context, ProductPage.routeName);},
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
