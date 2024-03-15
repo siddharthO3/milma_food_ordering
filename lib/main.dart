@@ -7,6 +7,7 @@ import 'package:milma_food_ordering/provider/cartProvider.dart';
 import 'package:milma_food_ordering/screens/cart.dart';
 import 'package:milma_food_ordering/screens/home_page.dart';
 import 'package:milma_food_ordering/screens/login/signinP.dart';
+import 'package:milma_food_ordering/screens/paymentPage.dart';
 import 'package:milma_food_ordering/screens/order_placed.dart';
 import 'package:milma_food_ordering/screens/paymentPage.dart';
 import 'package:milma_food_ordering/screens/product_page.dart';

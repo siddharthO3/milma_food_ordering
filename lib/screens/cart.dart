@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:milma_food_ordering/provider/cartProvider.dart';
+import 'package:milma_food_ordering/provider/cartProvider.dart';
 import 'package:milma_food_ordering/screens/order_placed.dart';
+import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
