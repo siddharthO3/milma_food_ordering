@@ -18,11 +18,7 @@ class _OrderPlacedSplashState extends State<OrderPlacedSplash> {
     super.initState();
 
     Timer(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProductPage(),
-          ));
+      Navigator.popUntil(context, ModalRoute.withName('homepage'));
     });
   }
 
