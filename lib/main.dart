@@ -7,6 +7,7 @@ import 'package:milma_food_ordering/provider/cartProvider.dart';
 import 'package:milma_food_ordering/screens/cart.dart';
 import 'package:milma_food_ordering/screens/home_page.dart';
 import 'package:milma_food_ordering/screens/login/signinP.dart';
+import 'package:milma_food_ordering/screens/paymentPage.dart';
 import 'package:milma_food_ordering/screens/product_page.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
             'homepage': (context) => HomePage(),
             CartPage.routeName: (context) => CartPage(),
             ProductPage.routeName: (context) => const ProductPage(),
+            'payment': (context) => const PaymentP(),
           }
           //   home: Scaffold(
           //     backgroundColor: Colors.blue.shade50,
