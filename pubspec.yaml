@@ -46,6 +46,8 @@ dependencies:
   http: ^1.2.0
   email_auth: ^1.1.1
   shared_preferences: ^2.2.2
+  hexcolor: ^3.0.1
+  upi_india: ^3.0.1
 
   
 dev_dependencies:

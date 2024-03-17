@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:milma_food_ordering/provider/cartProvider.dart';
+import 'package:milma_food_ordering/screens/UPI/upi.dart';
 import 'package:milma_food_ordering/screens/order_placed.dart';
 import 'package:provider/provider.dart';
+import 'package:upi_india/upi_india.dart';
 
 class CartPage extends StatefulWidget {
   static const routeName = '/';
@@ -75,6 +76,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<CartProvider>(builder: (context, cartProvider, _) {
+      final totalPrice = cartProvider.getCartTotal();
       return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.white,
@@ -182,20 +184,21 @@ class _CartPageState extends State<CartPage> {
                                                                     index]
                                                                 .quantity ==
                                                             0) {
-                                                          setState(() {
-                                                            //   cartProvider.cartItems[index].quantity.removeAt(
-                                                            //       index);
-                                                            //   cartProvider.cartItems[index].productName
-                                                            //       .removeAt(
-                                                            //           index);
-                                                            //  cartProvider.cartItems[index].price.removeAt(
-                                                            //       index);
-                                                            cartProvider
-                                                                .cartItems
-                                                                .removeAt(
-                                                                    index);
-                                                            ;
-                                                          });
+                                                          setState(
+                                                            () {
+                                                              //   cartProvider.cartItems[index].quantity.removeAt(
+                                                              //       index);
+                                                              //   cartProvider.cartItems[index].productName
+                                                              //       .removeAt(
+                                                              //           index);
+                                                              //  cartProvider.cartItems[index].price.removeAt(
+                                                              //       index);
+                                                              cartProvider
+                                                                  .cartItems
+                                                                  .removeAt(
+                                                                      index);
+                                                            },
+                                                          );
                                                         }
                                                       },
                                                       icon: const Icon(
@@ -257,9 +260,7 @@ class _CartPageState extends State<CartPage> {
                                       ),
                                       const Spacer(),
                                       Text(
-                                        '\u{20B9} ' +
-                                            cartProvider.cartItems[index].price
-                                                .toString(),
+                                        '\u{20B9} ${cartProvider.cartItems[index].price}',
                                         style: const TextStyle(
                                           fontSize: 16,
                                         ),
@@ -292,8 +293,7 @@ class _CartPageState extends State<CartPage> {
                             width: 50,
                           ),
                           Text(
-                            '\u{20B9} ' +
-                                cartProvider.getCartTotal().toStringAsFixed(2),
+                            '\u{20B9} ${totalPrice.toStringAsFixed(2)}',
                             style: const TextStyle(
                                 fontSize: 26, fontWeight: FontWeight.bold),
                           )
@@ -306,7 +306,7 @@ class _CartPageState extends State<CartPage> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => OrderPlacedSplash(),
+                                builder: (context) => upi(price: totalPrice),
                               ),
                             );
                           } else {

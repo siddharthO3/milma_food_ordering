@@ -32,13 +32,3 @@ String? validateNumber(String? number) {
   }
   return null;
 }
-
-String? validateRollNumber(String? Rollnumber) {
-  // if (Rollnumber == null) {
-  //   return 'Please type a number';
-  // }
-  // if (Rollnumber.length < 10) {
-  //   return 'Your number should at least be 10 characters';
-  // }
-  // return null;
-}

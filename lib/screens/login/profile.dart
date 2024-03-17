@@ -21,6 +21,7 @@ class ProfileScreen extends StatelessWidget {
           key: _formKey,
           child: SizedBox(
             width: 800,
+            
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -35,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
+                ), 
                 const SizedBox(height: 60),
                 CircleAvatar(
                   backgroundColor: HexColor("#15274B"),
@@ -53,7 +54,6 @@ class ProfileScreen extends StatelessWidget {
                 const RoundTextField(
                   hintText: 'Roll number',
                   textInputAction: TextInputAction.next,
-                  validator: validateRollNumber,
                 ),
                 const SizedBox(height: 14),
                 const RoundTextField(
